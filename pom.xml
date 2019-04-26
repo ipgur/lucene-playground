@@ -42,6 +42,14 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*DaggerLucene*</exclude>
+                                <exclude>**/*DirectoryModule_*</exclude>
+                                <exclude>**/*LuceneModule_*</exclude>
+                                <exclude>**/*Application.*</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

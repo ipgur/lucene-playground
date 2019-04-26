@@ -37,6 +37,7 @@ public class SearchLocationsTest {
         try {
             List<Location> res = LuceneSearcher.searchAllLocations(luceneComponent.buildSearchIndex());
             assertEquals(2, res.size());
+            res.forEach(System.out::println);
         } catch (IOException e) {
             fail();
         }
@@ -48,6 +49,7 @@ public class SearchLocationsTest {
             List<Location> res = LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(),
                     49.861208, 8.659239, 650);
             assertEquals(1, res.size());
+            res.forEach(System.out::println);
         } catch (IOException e) {
             fail();
         }
@@ -58,10 +60,13 @@ public class SearchLocationsTest {
         try {
             List<Location> res = LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "hermes");
             assertEquals(1, res.size());
+            res.forEach(System.out::println);
             res = LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "dhl");
             assertEquals(1, res.size());
+            res.forEach(System.out::println);
             res = LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "bla");
             assertEquals(0, res.size());
+            res.forEach(System.out::println);
         } catch (IOException e) {
             fail();
         }

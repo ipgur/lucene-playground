@@ -1,3 +1,18 @@
+/*
+ * Copyright 2019 igur.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.strumski.playground;
 
 import com.strumski.playground.lucene.*;
@@ -22,13 +37,9 @@ public class Application {
         LuceneIndexer.indexPath(indexWriter, file.getAbsolutePath());
         indexWriter.close();
 
-        logger.info("------------- New search: finalAll ---------------");
         LuceneSearcher.searchAllLocations(luceneComponent.buildSearchIndex()).forEach(System.out::println);
-        logger.info("------------- New search: find all locations with name bla ---------------");
         LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "bla").forEach(System.out::println);
-        logger.info("------------- New search: find all locations with name hermes ---------------");
         LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "hermes").forEach(System.out::println);
-        logger.info("------------- New search: find all locations within given range ---------------");
         LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(),
                 49.861208, 8.659239, 500).forEach(System.out::println);
 

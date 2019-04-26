@@ -1,17 +1,8 @@
 package com.strumski.playground.model;
 
-/*
- * POJO class for a location of interest
- *
- * @author igur
- */
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.strumski.playground.lucene.DirectoryModule;
 import com.strumski.playground.lucene.DocumentFields;
 import org.apache.lucene.document.Document;
-import org.apache.lucene.document.LatLonDocValuesField;
-import org.apache.lucene.document.LatLonPoint;
-import org.apache.lucene.document.StoredField;
 
 import java.util.Objects;
 

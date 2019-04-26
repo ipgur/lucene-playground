@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class LuceneSearcher {
 
-    public static List<Location> findAllLocations(IndexSearcher indexSearcher) throws IOException {
+    public static List<Location> searchAllLocations(IndexSearcher indexSearcher) throws IOException {
         Query query = new MatchAllDocsQuery();
         List<Document> documents = executeQuery(indexSearcher, query, Integer.MAX_VALUE);
         List<Location> locations = documents.stream().map(Location::new).collect(Collectors.toList());
@@ -21,7 +21,7 @@ public class LuceneSearcher {
         return locations;
     }
 
-    public static List<Location> findLocationsByName(IndexSearcher indexSearcher, String name) throws IOException {
+    public static List<Location> searchLocationsWithinDistance(IndexSearcher indexSearcher, String name) throws IOException {
         Query query = new TermQuery(new Term(DocumentFields.NAME_FIELD, name));
         List<Document> documents = executeQuery(indexSearcher, query, Integer.MAX_VALUE);
         List<Location> locations = documents.stream().map(Location::new).collect(Collectors.toList());
@@ -29,7 +29,7 @@ public class LuceneSearcher {
         return locations;
     }
 
-    public static List<Location> findLocationsWithinDistance(IndexSearcher indexSearcher,
+    public static List<Location> searchLocationsWithinDistance(IndexSearcher indexSearcher,
                                                              double latitude, double longitude, double distance) throws IOException {
         Query query = LatLonPoint.newDistanceQuery(DocumentFields.LOCATION_TAG, latitude, longitude, distance);
         List<Document> documents = executeQuery(indexSearcher, query, Integer.MAX_VALUE);

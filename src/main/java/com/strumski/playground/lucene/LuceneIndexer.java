@@ -38,9 +38,9 @@ public final class LuceneIndexer {
 
     private static void addDocument(IndexWriter indexWriter, Location location) throws IOException {
         Document doc = new Document();
-        doc.add(new StoredField(DocumentFields.NAME_FIELD, location.getName()));
+        doc.add(new TextField(DocumentFields.NAME_FIELD, location.getName(), Field.Store.YES));
         doc.add(new StringField(DocumentFields.KEY, Integer.toString(location.hashCode()), Field.Store.YES));
-        doc.add(new StoredField(DocumentFields.ADDRESS_FIELD, location.getAddress()));
+        doc.add(new TextField(DocumentFields.ADDRESS_FIELD, location.getAddress(), Field.Store.YES));
         doc.add(new StringField(DocumentFields.CITY_FIELD, location.getCity(), Field.Store.YES));
         doc.add(new LatLonPoint(DocumentFields.LOCATION_TAG, location.getLatitude(), location.getLongitude()));
         doc.add(new StoredField(DocumentFields.LATITUDE, location.getLatitude()));

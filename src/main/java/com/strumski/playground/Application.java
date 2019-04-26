@@ -23,14 +23,14 @@ public class Application {
         indexWriter.close();
 
         logger.info("------------- New search: finalAll ---------------");
-        LuceneSearcher.findAllLocations(luceneComponent.buildSearchIndex()).forEach(System.out::println);
+        LuceneSearcher.searchAllLocations(luceneComponent.buildSearchIndex()).forEach(System.out::println);
         logger.info("------------- New search: find all locations with name bla ---------------");
-        LuceneSearcher.findLocationsByName(luceneComponent.buildSearchIndex(), "bla").forEach(System.out::println);;
+        LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "bla").forEach(System.out::println);
         logger.info("------------- New search: find all locations with name hermes ---------------");
-        LuceneSearcher.findLocationsByName(luceneComponent.buildSearchIndex(), "hermes").forEach(System.out::println);;
+        LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(), "hermes").forEach(System.out::println);
         logger.info("------------- New search: find all locations within given range ---------------");
-        LuceneSearcher.findLocationsWithinDistance(luceneComponent.buildSearchIndex(),
-                49.861208, 8.659239, 500).forEach(System.out::println);;
+        LuceneSearcher.searchLocationsWithinDistance(luceneComponent.buildSearchIndex(),
+                49.861208, 8.659239, 500).forEach(System.out::println);
 
     }
 }

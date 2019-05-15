@@ -34,5 +34,5 @@ jobs: # a collection of steps
 
       - store_artifacts: # store the uberjar as an artifact
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: target/lucene-playground-1.0-SNAPSHOT.jar
+          path: target/lucene-playground-1.0-SN APSHOT.jar
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
